@@ -1,13 +1,21 @@
 {% extends 'blog/base.html' %}
 
+
+
 {% block content %}
     {% for post in posts %}
-        <div class="post">
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
+    <a href="#">
+        <div class="ramdom-post">
+            <div class="title-name"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></div>
+                <div class="post-info">
+                    <div><img src="img/Ellipse 4avatar.png" class="img"></div>
+                        <div>
+                            <div class="nick-name">{{ post.author }}</div>
+                            <div class="comment">{{ post.text|linebreaksbr }}</div>
+                            
+                        </div>
+                </div>
+        </div></a>
+{% endfor %}
 {% endblock %}
+
