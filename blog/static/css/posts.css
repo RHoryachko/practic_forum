@@ -6,6 +6,7 @@
     border-radius: 20px;
     color:black;
     width:70%;
+    padding: 0px 0px 30px 0px;
 
 }
 
@@ -26,11 +27,17 @@
     display:flex;
 }
 
-.img {
-    height: 60px;
+.post_img {
+    height: 700px;
     margin-right: 5px;
+    width:98%;
 }
 
+.img {
+    height: 20px;
+    margin-right: 5px;
+    width:70%;
+}
 .nick-name {
     color:#3D5037;
     font-size: 20px;

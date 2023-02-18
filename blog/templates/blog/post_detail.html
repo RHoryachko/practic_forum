@@ -14,5 +14,10 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.image %}
+            <p><img src="{{post.image.url}}"></p>
+        {% else %}
+            <p></p>
+        {% endif %}
     </div>
 {% endblock %}

@@ -12,7 +12,11 @@
                         <div>
                             <div class="nick-name">{{ post.author }}</div>
                             <div class="comment">{{ post.text|linebreaksbr }}</div>
-                            
+                            {% if post.image %}
+                                <img class='post_img' src="{{ post.image.url }}">
+                            {% else %}
+                                <p></p>
+                            {% endif %}
                         </div>
                 </div>
         </div></a>
