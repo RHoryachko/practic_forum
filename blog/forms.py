@@ -3,7 +3,7 @@ from django import forms
 from .models import Post
 
 class PostForm(forms.ModelForm):
-    image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False)
 
     class Meta:
         model = Post

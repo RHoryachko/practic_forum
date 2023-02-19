@@ -4,6 +4,10 @@ from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
+from django.views import View
+from django.views.generic.edit import DeleteView
+from django.views.decorators.http import require_POST
+from django.urls import reverse
 
 
 
@@ -53,3 +57,12 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+
+def post_delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('post_list')
+    return redirect('post_detail', pk=post.pk)

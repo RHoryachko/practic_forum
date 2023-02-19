@@ -10,6 +10,7 @@
         {% if user.is_authenticated %}
         {% if post.author == request.user %}
             <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">Редагувати пост<span class="glyphicon glyphicon-pencil"></span></a>
+            <button class="btn btn-danger" onclick="deletePost({{ post.pk|safe }})">Видалити пост</button>
         {% endif %}
         {% endif %}
         <h1>{{ post.title }}</h1>
@@ -21,3 +22,10 @@
         {% endif %}
     </div>
 {% endblock %}
+
+
+
+
+
+
+

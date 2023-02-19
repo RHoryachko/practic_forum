@@ -1,0 +1,13 @@
+body {
+    height: 1000px;
+    padding-top: 163px;
+    font-family: Franklin Gothic Medium;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.body {
+    display: flex;
+}
