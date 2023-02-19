@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Post
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
 from django.shortcuts import redirect
 from django.views import View
 from django.views.generic.edit import DeleteView
 from django.views.decorators.http import require_POST
 from django.urls import reverse
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
 
 
@@ -19,7 +19,18 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    comments = post.comments.filter(approved_comment=True)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'form': form})
 
 
 
