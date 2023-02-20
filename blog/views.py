@@ -8,6 +8,11 @@ from django.views.decorators.http import require_POST
 from django.urls import reverse
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
+from django.contrib.auth.forms import UserCreationForm
+from .forms import EmailUserCreationForm
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import LoginView, LogoutView
+
 
 
 
@@ -51,7 +56,7 @@ def post_new(request):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+    return render(request, 'blog/post_new.html', {'form': form})
 
 
 
@@ -77,3 +82,15 @@ def post_delete(request, pk):
         post.delete()
         return redirect('post_list')
     return redirect('post_detail', pk=post.pk)
+
+
+
+def register(request):
+    if request.method == 'POST':
+        form = EmailUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('login')
+    else:
+        form = EmailUserCreationForm()
+    return render(request, 'registration/register.html', {'form': form})
