@@ -17,11 +17,18 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    text = forms.CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'type-comment',
+            'id': 'text',
+            'placeholder': 'Add comment...'
+        }),
+        label=''  # Встановлюємо label пустим рядком, щоб забрати атрибут for
+    )
 
     class Meta:
         model = Comment
         fields = ('text',)
-
 
 
 class EmailUserCreationForm(UserCreationForm):

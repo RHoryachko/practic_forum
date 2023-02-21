@@ -1,54 +1,80 @@
 {% extends 'header/base.html' %}
-
+{% load static %}
 {% block content %}
-    <div class="post">
-        {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
+
+            <div class="post">
+                <div class="user-post-information">
+                    <div class="user-img-information" ><img src="{% static 'img/Ellipse 48.png' %}" class="user-img"></div>
+                    <div class="user-information">
+                        <div  class="user-nickname">{{ post.author }}</div>
+                        {% if post.published_date %}
+                            <div class="date"><img src="{% static 'img/Date_today.png' %}" class="post-date-icon">{{ post.published_date }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="attribute">
+                    <hr class="dividing-line">
+                    <img src="{% static 'img/Vector 123.png' %}" class="vector-img">
+                    {% if user.is_authenticated %}
+                        {% if post.author == request.user %}
+                            <a href="{% url 'post_edit' pk=post.pk %}"><<img src="{% static 'img/Subtract_pen.png' %}" class="pen-img"></a>
+                                <a href="" onclick="deletePost({{ post.pk|safe }})">
+                                    <img src="{% static 'img/close_ring_fill.png' %}" class="exit-button">
+                                </a>
+                        {% else %}
+                            <img src="{% static 'img/Subtract_pen.png' %}" class="pen-img">
+                        {% endif %}
+                    {% endif %}                    
+                    <hr class="white-line">
+                </div>
+                <div class="post-content">
+                    <div class="post-title">{{ post.title }}</div>
+                    <div class="post-text">{{ post.text|linebreaksbr }}</div>
+                    {% if post.image %}
+                        <img src="{{post.image.url}}" class="post-img">
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+                </div>
             </div>
-        {% endif %}
-        {% if user.is_authenticated %}
-        {% if post.author == request.user %}
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">Редагувати пост<span class="glyphicon glyphicon-pencil"></span></a>
-            <button class="btn btn-danger" onclick="deletePost({{ post.pk|safe }})">Видалити пост</button>
-        {% endif %}
-        {% endif %}
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaksbr }}</p>
-        {% if post.image %}
-            <p><img src="{{post.image.url}}"></p>
-        {% else %}
-            <p></p>
-        {% endif %}
-    </div>
-    <h2>Comments</h2>
-        {% for comment in comments %}
-            <div class="comment">
-                <p class="info">
-                    {{ comment.author }} | {{ comment.created_date }}
-                </p>
-                <p>{{ comment.text|linebreaks }}</p>
-            </div>
+            <div class="comment-section-inscription">Comments</div>
+
+            <div class="comments-list">
+                
+
+            {% for comment in comments %}
+                <div class="comment">
+                    <div class="image"><img src="{% static 'img/Ellipse 49.png' %}" class="img"></div>
+                    <div class="comment-info">
+                        <div class="info">
+                            <div class="nickname">{{ comment.author }}</div>
+                            <div class="comment-date"><img src="{% static 'img/Date_today.png' %}" class="date-icon">{{ comment.created_date }}</div>
+                        </div>
+                        <div class="comment-text">{{ comment.text|linebreaks }}</div>
+                    </div>
+                </div>
             {% empty %}
-            <p>No comments yet.</p>
-        {% endfor %}
-        
-        
-        {% if user.is_authenticated %}
-        <hr>
-            <h2>Add Comment</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Add Comment</button>
-                </form>
-        {% endif %}
+                <p>No comments yet.</p>
+            {% endfor %}
 
+
+            {% if user.is_authenticated %}
+                <form method="POST">
+                <div class="add-comment">
+                    <div class="image"><img src="{% static 'img/Ellipse 49.png' %}" class="img"></div>
+                    
+                    
+                    <div class="add-comment-tools">
+                          {% csrf_token %}
+                          {{ form }}  
+
+                        <!--  <input class="type-comment" placeholder="Add comment..." type="text">--> 
+                        <button class="submit-button" type="submit"><img src="{% static 'img/Subtract.png' %}" class="submit-button-img"></button>
+                    </div>
+                
+                </div>
+            </form>
+            {% endif %}
+
+            </div>
 {% endblock %}
-
-
-
-
-
-
-
