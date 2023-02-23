@@ -1,0 +1,46 @@
+.head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #3D5037;
+
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0px;
+    height: 103px;
+}
+
+.logo {
+    margin-left: 35px;
+    flex: 1;
+    margin-bottom: 22px;
+    font-size: 50px;
+}
+
+.logo:active {
+    opacity: 0.5;
+}
+
+.login-button {
+    margin-right: 42px;
+    border-radius: 20px;
+    padding: 15px;
+    padding-right: 35px;
+    background-color: white;
+    color: #3D5037;
+    font-size: 32px;
+}
+
+.login-button:active{
+    opacity: 0.5;
+}
+
+.craete-account-button {
+    font-size: 40px;
+    margin-right: 41px
+}
+
+.craete-account-button:active {
+opacity: 0.5;
+}

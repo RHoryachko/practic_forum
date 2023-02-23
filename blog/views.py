@@ -9,7 +9,6 @@ from django.urls import reverse
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.forms import UserCreationForm
-from .forms import EmailUserCreationForm
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LoginView, LogoutView
 
@@ -85,12 +84,3 @@ def post_delete(request, pk):
 
 
 
-def register(request):
-    if request.method == 'POST':
-        form = EmailUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            return redirect('login')
-    else:
-        form = EmailUserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
