@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+    <head>
+        <title>Forum</title>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/head.css' %}">
+        <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+        <link rel="stylesheet" href="{% static 'css/content1.css' %}">
+        <link rel="stylesheet" href="{% static 'css/posts.css' %}">
+        <link rel="stylesheet" href="{% static 'css/post_detail6.css' %}">
+    </head>
+    <body>
+    <div class="head">
+        <a href="" class="logo" >Logo</a>
+    </div>
+    
+    <div class="body">
+
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+{% block scripts %}
+    <script src="{% static 'js/post_delete1.js' %}"></script>
+{% endblock %}
+</body>
+</html>
+
+        

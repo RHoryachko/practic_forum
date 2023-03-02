@@ -4,9 +4,17 @@
 
             <div class="post">
                 <div class="user-post-information">
-                    <div class="user-img-information" ><img src="{% static 'img/Ellipse 48.png' %}" class="user-img"></div>
+                    <div class="user-img-information" > 
+                        {% if post.author.profile.profile_pic %}
+                            <img src="{{ post.author.profile.profile_pic.url }}" height="50" width="50" class="user-img">
+                        {% else %}
+                        
+                        {% endif %}
+                    </div>
                     <div class="user-information">
-                        <div  class="user-nickname">{{ post.author }}</div>
+                        <a href="{% url 'user_profile' pk=post.author_id %}" style="color: black;">
+                            <div  class="user-nickname">{{ post.author }}</div>
+                        </a>
                         {% if post.published_date %}
                             <div class="date"><img src="{% static 'img/Date_today.png' %}" class="post-date-icon">{{ post.published_date }}</div>
                         {% endif %}
@@ -31,7 +39,7 @@
                     <div class="post-title">{{ post.title }}</div>
                     <div class="post-text">{{ post.text|linebreaksbr }}</div>
                     {% if post.image %}
-                        <img src="{{post.image.url}}" class="post-img">
+                        <img src="{{post.image.url}}" class="post_img">
                     {% else %}
                         <p></p>
                     {% endif %}
@@ -44,7 +52,13 @@
 
             {% for comment in comments %}
                 <div class="comment">
-                    <div class="image"><img src="{% static 'img/Ellipse 49.png' %}" class="img"></div>
+                    <div class="image">
+                         {% if comment.author.profile.profile_pic %}
+                            <img src="{{ comment.author.profile.profile_pic.url }}" height="50" width="50" class="img">
+                        {% else %}
+                        
+                        {% endif %}
+                    </div>
                     <div class="comment-info">
                         <div class="info">
                             <div class="nickname">{{ comment.author }}</div>
@@ -61,7 +75,13 @@
             {% if user.is_authenticated %}
                 <form method="POST">
                 <div class="add-comment">
-                    <div class="image"><img src="{% static 'img/Ellipse 49.png' %}" class="img"></div>
+                    <div class="image">
+                        {% if user.profile.profile_pic %}
+                            <img src="{{ user.profile.profile_pic.url }}" height="100" width="100" class="img">
+                        {% else %}
+      
+                        {% endif %}
+                    </div>
                     
                     
                     <div class="add-comment-tools">

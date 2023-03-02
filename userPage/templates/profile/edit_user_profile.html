@@ -1,0 +1,13 @@
+{% extends 'head/base.html' %}
+{% block content %}
+    {% if user.id == profile.user.id %}
+    <div class="card-body">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class="button" type="submit" value="Submit">
+        </form>
+    </div>
+{% endif %}
+
+{% endblock content %}

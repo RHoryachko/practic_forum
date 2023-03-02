@@ -12,7 +12,8 @@ def register(request):
         form = EmailUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('login')
+            login(request, user)
+            return redirect('create_user_profile')
     else:
         form = EmailUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})

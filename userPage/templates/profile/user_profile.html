@@ -1,9 +1,32 @@
-{% extends 'header/base.html' %}
-
-
-
+{% extends 'head/base.html' %}
 {% block content %}
-    {% for post in posts %}
+
+    <div class="header-bar">
+        <h1>Profile</h> 
+        {% if user.id == profile.user.id %}
+          <a href="{% url 'edit_user_profile' profile.id %}"><button class="button">Редагувати</button></a>
+        {% endif %}
+        
+    </div>
+    
+    <div class="card-body">
+    {% if user.profile.profile_pic %}
+      <img src="{{ profile.profile_pic.url }}" height=100 width=100><br><br>
+    {% else %}
+      
+    {% endif %}
+      <p><strong>Username:</strong> {{ user.username }}</p><br><br>
+      <p><strong>Bio:</strong> {{ profile.bio }}</p><br><br>
+      {% if profile.first_name %}
+      <p><strong>Прізвище:</strong> {{ profile.first_name }}</p><br><br>
+      {% endif %}
+      {% if profile.last_name %}
+      <p><strong>Імя:</strong> {{ profile.last_name }}</p><br><br>
+      {% endif %}
+    </div>
+
+     {% for post in posts %}
+     {% if profile.user == post.author %}
     <a href="#">
         <div class="ramdom-post">
             <div class="title-name"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></div>
@@ -26,6 +49,7 @@
                         </div>
                 </div>
         </div></a>
+{% endif %}
 {% endfor %}
-{% endblock %}
 
+{% endblock content %}
