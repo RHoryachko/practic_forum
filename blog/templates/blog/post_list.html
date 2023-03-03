@@ -10,7 +10,7 @@
                 <div class="post-info">
                     <div>
                         {% if post.author.profile.profile_pic %}
-                            <img src="{{ post.author.profile.profile_pic.url }}" height="50" width="50"><br><br>
+                            <img src="{{ post.author.profile.profile_pic.url }}" height="50" width="50" class="user-img">
                         {% else %}
                         
                         {% endif %}
@@ -19,7 +19,7 @@
                             <a href="{% url 'user_profile' pk=post.author_id %}"><div class="nick-name">{{ post.author }}</div></a>
                             <div class="comment">{{ post.text|linebreaksbr }}</div>
                             {% if post.image %}
-                                <img class='post_img' src="{{ post.image.url }}">
+                                <img class='post_img' src="{{ post.image.url }}"  >
                             {% else %}
                                 <p></p>
                             {% endif %}

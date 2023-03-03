@@ -1,0 +1,106 @@
+body {
+    background: #607C55;
+}
+
+.box {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:915px;
+    height:650px;
+    background-color: #fff;
+    border:10px solid #3D5037;
+    border-radius: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 90px;
+    font-size: 64px;
+    color:#3D5037;
+    font-weight: 400;
+}
+
+.input {
+    position: relative;
+    border-bottom: 5px solid #3D5037 ;
+    margin-left: 240px;
+    margin-right: 175px;
+    margin-bottom: 50px;
+}
+
+.real-input {
+    width:100%;
+    padding: 0 1px;
+    height: 50px;
+    font-size:28px;
+    border: none;
+    background: none;
+    outline: none;
+
+}
+
+label {
+    position:absolute;
+    left:3px;
+    top:50%;
+    transform: translateY(-50%);
+    color:#7d7d7d;
+    font-size: 32px;
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.input input:focus ~ label,
+.input input:valid ~ label {
+    top: -10px;
+    color:#3D5037
+}
+
+.buttons {
+    position:absolute;
+    top:70%;
+    left:40%;
+    transform: translate(-26%, -50%);
+}
+
+button {
+    color: #fff;
+    background-color: #3D5037;
+    border:none;
+    border-radius: 20px;
+    height:65px;
+    width: 225px;
+    font-size: 32px;
+    cursor: pointer;
+}   
+
+button:active {
+    opacity: 0.9;
+}
+
+.sing-in {
+    margin-left: 50px;
+}
+#id_username {
+    width:100%;
+    padding: 0 1px;
+    height: 50px;
+    font-size:28px;
+    border: none;
+    background: none;
+    outline: none;
+
+}
+
+#id_password {
+    width:100%;
+    padding: 0 1px;
+    height: 50px;
+    font-size:28px;
+    border: none;
+    background: none;
+    outline: none;
+
+}

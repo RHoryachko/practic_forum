@@ -61,7 +61,11 @@
                     </div>
                     <div class="comment-info">
                         <div class="info">
-                            <div class="nickname">{{ comment.author }}</div>
+                            <div class="nickname">
+                                <a href="{% url 'user_profile' pk=comment.author_id %}" style="color: black;">
+                                    {{ comment.author }}
+                                </a>
+                            </div>
                             <div class="comment-date"><img src="{% static 'img/Date_today.png' %}" class="date-icon">{{ comment.created_date }}</div>
                         </div>
                         <div class="comment-text">{{ comment.text|linebreaks }}</div>
