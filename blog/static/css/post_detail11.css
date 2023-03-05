@@ -28,7 +28,7 @@
 }
 .comment {
     margin-top: 20px;
-    margin-left:25px;
+    margin-left: 1px;
     display: flex;
     flex-direction: row;
     width:100%;

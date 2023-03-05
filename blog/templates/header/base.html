@@ -7,8 +7,8 @@
         <link rel="stylesheet" href="{% static 'css/menu.css' %}">
         <link rel="stylesheet" href="{% static 'css/content1.css' %}">
         <link rel="stylesheet" href="{% static 'css/posts1.css' %}">
-        <link rel="stylesheet" href="{% static 'css/post_detail8.css' %}">
-        <link rel="stylesheet" href="{% static 'css/post_edit8.css' %}">
+        <link rel="stylesheet" href="{% static 'css/post_detail11.css' %}">
+        <link rel="stylesheet" href="{% static 'css/post_edit10.css' %}">
     </head>
     <body>
     <div class="head">
@@ -27,8 +27,12 @@
         {% if user.is_authenticated %}
         <div class="menu-bar">
             <br>
-            <a href="{% url 'user_profile' pk=user.profile.id %}" class="menu-bar-button">Profile</a>
-            <form>  {% csrf_token %}<a href="#" class="curr-menu-bar-button">Forum</a></form>
+            {% if user.profile.id%}
+                <a href="{% url 'user_profile' pk=user.profile.id %}" class="menu-bar-button">Profile</a>
+            {% else %}
+                <a href="{% url 'create_user_profile'%}" class="menu-bar-button">New Profile</a>
+            {% endif %}
+            <form>  {% csrf_token %}<a href="{% url 'post_list' %}" class="curr-menu-bar-button">Forum</a></form>
         </div>
          {% endif %}
 

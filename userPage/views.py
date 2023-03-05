@@ -10,7 +10,7 @@ from django.views.generic.edit import UpdateView
 from django.http import HttpResponseRedirect
 from django.db import IntegrityError
 
-
+'''
 class ShowProfilePageView(DetailView):
     model = Profile
     template_name = 'profile/user_profile.html'
@@ -21,6 +21,26 @@ class ShowProfilePageView(DetailView):
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
         context['posts'] = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
         return context
+'''
+
+class ShowProfilePageView(DetailView):
+    model = Profile
+    template_name = 'profile/user_profile.html'
+    # Використовуємо reverse_lazy() для того, щоб уникнути проблем з імпортуванням URL-адреси
+    # під час ініціалізації класу.
+    create_profile_url = reverse_lazy('create_user_profile')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['posts'] = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        return context
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object is None:
+            return redirect(self.create_profile_url)
+        return super().get(request, *args, **kwargs)
+
 
 
 class CreateProfilePageView(CreateView):

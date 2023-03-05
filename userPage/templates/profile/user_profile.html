@@ -1,4 +1,5 @@
 {% extends 'head/base.html' %}
+{% load static %}
 {% block content %}
 
 
@@ -14,10 +15,11 @@
 
   </div>
     <div class="text-about-user">
-      <div class="user-nickname">{{ user.username }}</div>
+      <div class="user-nickname">{{ profile.user.username }}
       {% if user.id == profile.user.id %}
-          <a href="{% url 'edit_user_profile' profile.id %}"><button class="button">Редагувати</button></a>
+          <a href="{% url 'edit_user_profile' profile.id %}"><img src="{% static 'img/Subtract_pen.png' %}" class="pen-img"></a>
       {% endif %}
+      </div>
         <ul class="full-name">
           {% if profile.first_name %}
             <li class="first name">First name: {{ profile.first_name }}</li>
@@ -44,7 +46,7 @@
       <div class="post-info">
         <div>
           {% if post.author.profile.profile_pic %}
-            <img src="{{ post.author.profile.profile_pic.url }}" height="50" width="50"><br><br>
+            <img src="{{ post.author.profile.profile_pic.url }}" height="50" width="50" class="user-img">
           {% else %}
                         
           {% endif %}
