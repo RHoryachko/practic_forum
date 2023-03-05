@@ -1,55 +1,66 @@
 {% extends 'head/base.html' %}
 {% block content %}
 
-    <div class="header-bar">
-        <h1>Profile</h> 
-        {% if user.id == profile.user.id %}
-          <a href="{% url 'edit_user_profile' profile.id %}"><button class="button">Редагувати</button></a>
-        {% endif %}
-        
-    </div>
-    
-    <div class="card-body">
+
+
+
+<div class="user">
+  <div>
     {% if user.profile.profile_pic %}
-      <img src="{{ profile.profile_pic.url }}" height=100 width=100><br><br>
+      <img class="avatar-img" src="{{ profile.profile_pic.url }}">
     {% else %}
-      
+
     {% endif %}
-      <p><strong>Username:</strong> {{ user.username }}</p><br><br>
-      <p><strong>Bio:</strong> {{ profile.bio }}</p><br><br>
-      {% if profile.first_name %}
-      <p><strong>Прізвище:</strong> {{ profile.first_name }}</p><br><br>
+
+  </div>
+    <div class="text-about-user">
+      <div class="user-nickname">{{ user.username }}</div>
+      {% if user.id == profile.user.id %}
+          <a href="{% url 'edit_user_profile' profile.id %}"><button class="button">Редагувати</button></a>
       {% endif %}
-      {% if profile.last_name %}
-      <p><strong>Імя:</strong> {{ profile.last_name }}</p><br><br>
-      {% endif %}
+        <ul class="full-name">
+          {% if profile.first_name %}
+            <li class="first name">First name: {{ profile.first_name }}</li>
+          {% endif %}
+          {% if profile.last_name %}  
+            <li class="last name">Last name: {{ profile.last_name }}</li>
+          {% endif %}
+        </ul>
+          <div class="registration-date">Date of registration:<br>{{ user.date_joined}}</div>
+          <div class="about-user">Info:<br>{{ profile.bio }}</div>
     </div>
 
-     {% for post in posts %}
-     {% if profile.user == post.author %}
-    <a href="#">
-        <div class="ramdom-post">
-            <div class="title-name"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></div>
-                <div class="post-info">
-                    <div>
-                        {% if post.author.profile.profile_pic %}
-                            <img src="{{ post.author.profile.profile_pic.url }}" height="50" width="50"><br><br>
-                        {% else %}
+</div>
+  <div class="white-line">
+  {% if user.id == profile.user.id %} 
+    <button class="plus"><a href="{% url 'post_new' %}" style="color:#3D5037;">+</a></button>
+  {% endif %}  
+    <button class="all-users-post">All user's post</button>
+  </div>
+  {% for post in posts %}
+  {% if profile.user == post.author %}
+  <div class="ramdom-post">
+    <div class="title-name"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></div>
+      <div class="post-info">
+        <div>
+          {% if post.author.profile.profile_pic %}
+            <img src="{{ post.author.profile.profile_pic.url }}" height="50" width="50"><br><br>
+          {% else %}
                         
-                        {% endif %}
-                    </div>
-                        <div>
-                            <a href="{% url 'user_profile' pk=post.author_id %}"><div class="nick-name">{{ post.author }}</div></a>
-                            <div class="comment">{{ post.text|linebreaksbr }}</div>
-                            {% if post.image %}
-                                <img class='post_img' src="{{ post.image.url }}">
-                            {% else %}
-                                <p></p>
-                            {% endif %}
-                        </div>
-                </div>
-        </div></a>
-{% endif %}
-{% endfor %}
-
+          {% endif %}
+        </div>
+        <div>
+          <a href="{% url 'user_profile' pk=post.author_id %}"><div class="nick-name">{{ post.author }}</div></a>
+          <div class="comment">{{ post.text|linebreaksbr }}</div>
+            {% if post.image %}
+              <img class='post_img' src="{{ post.image.url }}">
+            {% else %}
+              <p></p>
+            {% endif %}
+        </div>
+      </div>
+  {% endif %}
+  {% endfor %}
 {% endblock content %}
+
+  
