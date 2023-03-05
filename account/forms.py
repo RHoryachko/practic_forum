@@ -4,14 +4,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class LoginForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-
 
 
 class EmailUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'real-input'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'real-input'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'real-input'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'real-input'}))
+
 
     class Meta:
         model = User

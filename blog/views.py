@@ -79,6 +79,7 @@ def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
         post.delete()
+        print('post_del')
         return redirect('post_list')
     return redirect('post_detail', pk=post.pk)
 

@@ -1,0 +1,109 @@
+.white-board1 {
+    margin-top: 25px;
+    margin-left: 7%;
+    display:inline-block;
+    background-color: white;
+    border-radius: 20px;
+    color:black;
+    width:87%;
+    padding-bottom: 30px;
+    min-width: 560px;
+
+}
+
+.user-information1 {
+    display: flex;
+}
+
+.user-img1 {
+    height:55px;
+    width:55px;
+    margin-right: 30px;
+    margin-left: 55px;
+    margin-top: 15px;
+    border-radius:50%;
+}
+.user-nickname1 {
+    color: #3D5037;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.attribute {
+    position:relative;
+}
+.exit-button {
+    position: absolute;
+    top:-66px;
+    right:12px;
+    height:25px;
+    width:25px;
+
+}
+
+.title-input{
+    background-color: #3D5037;
+    color:white;
+    border-radius: 20px;
+    font-size: 24px;
+    min-height: 30px;
+    text-align: left;
+    padding-left: 15px;
+    margin-left: 105px;
+    width: 33%;
+
+}
+
+.title-input::placeholder {
+    color: #7AA06E;
+}
+
+.text-input {
+    background: none;
+    border: 3.5px solid rgb(88, 86, 86);
+    color: black;
+    border-radius: 20px;
+    font-size: 24px;
+    height: 275px;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-left: 105px;
+    margin-top: 45px;
+    width: 73%;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    resize: none;
+
+}
+
+.text-input::placeholder {
+    color: #7AA06E;
+
+}
+
+.clickable {
+    border: 3.5px solid rgb(88, 86, 86);
+    display: flex;
+    flex-direction:row;
+    background: none;
+    border-radius: 20px;
+    margin-left: 105px;
+    margin-top: -3px;
+    width: 70.5%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding-left: 8.5px;
+    padding-right: 8.5px;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.clickable-img {
+    height: 20px;
+    width: 20px;
+}
+
+.clickable-img::after {
+    opacity: 0.5;
+}
+

@@ -1,0 +1,144 @@
+body {
+    background: #607C55;
+}
+
+
+.box {
+    position:absolute;
+    top:65%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    min-width:1038px;
+    height:650px;
+    background-color: #fff;
+    border:10px solid #3D5037;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+h1 {
+    margin-top: 45px;
+    margin-left:100px;
+    font-size: 64px;
+    color:#3D5037;
+    font-weight: 400;
+}
+
+.input {
+    position: relative;
+    border-bottom: 3px solid #3D5037 ;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    width:285px;
+}
+
+.real-input {
+    width:100%;
+    padding: 0 1px;
+    height: 50px;
+    font-size:28px;
+    border: none;
+    background: none;
+    outline: none;
+
+}
+
+label {
+    position:absolute;
+    left:3px;
+    top:50%;
+    transform: translateY(-50%);
+    color:#7d7d7d;
+    font-size: 24px;
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.input input:focus ~ label,
+.input input:valid ~ label {
+    top: -10px;
+    color:#3D5037
+}
+
+.tips {
+    color: #fff;
+    background-color: #607C55;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: none;
+    padding: 8px;
+    font-weight:400px;
+}
+
+.tips.t1 {
+    font-size: 16px;
+    margin-top: 155px;
+    margin-left: 32px;
+    width:255px;
+}
+
+.tips.t2 {
+    margin-top: 55px;
+    margin-left: 52px;
+    width:197px;
+}
+
+.tips.t3 {
+    margin-top: 10px;
+    margin-left: 116px;
+    margin-right: 20px;
+    width:177px;
+}
+
+.tips.t4 {
+    margin-top: 10px;
+    margin-left: 64px;
+    width:190px;
+}
+
+.tips.t5 {
+    margin-top: 10px;
+    margin-left: 136px;
+    width:150px;
+}
+
+.tip-arrows {
+    pointer-events: none;
+    position:absolute;
+    top:50%;
+    left:35.3%;
+    height: 190px;
+}
+
+button {
+    color: #fff;
+    background-color: #3D5037;
+    border:none;
+    border-radius: 20px;
+    height:65px;
+    width: 415px;
+    font-size: 32px;
+    cursor: pointer;
+    margin-left:100px;
+    position: absolute;
+}   
+
+button:active {
+    opacity: 0.9;
+}
+
+.image-div {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+    border: 5px solid #3D5037;
+    position: absolute;
+    top:-5px;
+    left:-6px;    
+}

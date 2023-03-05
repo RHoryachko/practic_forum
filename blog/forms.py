@@ -7,13 +7,15 @@ from django.contrib.auth.models import User
 
 
 class PostForm(forms.ModelForm):
-    image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False)
+    title = forms.CharField(label="Заголовок", widget=forms.TextInput(attrs={'placeholder': 'Введіть заголовок...', 
+                                                                            'class' : 'title-input'}))
+    text = forms.CharField(label="Текст", widget=forms.Textarea(attrs={'placeholder': 'Введіть текст...',
+                                                                        'class' : 'text-input'}))
+    image = forms.ImageField(label="Зображення", widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False)
 
     class Meta:
         model = Post
         fields = ('title', 'text', 'image',)
-        my_image = forms.ImageField()
-
 
 
 class CommentForm(forms.ModelForm):
