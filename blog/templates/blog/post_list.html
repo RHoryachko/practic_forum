@@ -1,4 +1,5 @@
 {% extends 'header/base.html' %}
+{% load static %}
 
 
 
@@ -12,7 +13,7 @@
                         {% if post.author.profile.profile_pic %}
                             <img src="{{ post.author.profile.profile_pic.url }}" height="50" width="50" class="user-img">
                         {% else %}
-                        
+                            <img src="{% static 'img/ava.jpg' %}" height="50" width="50" class="user-img">
                         {% endif %}
                     </div>
                         <div>

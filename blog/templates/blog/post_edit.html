@@ -8,7 +8,7 @@
             {% if user.profile.profile_pic %}
                 <img src="{{ user.profile.profile_pic.url }}" height="100" width="100" class="user-img1">
             {% else %}
-      
+                 <img src="{% static 'img/ava.jpg' %}" height="50" width="50" class="user-img1">
             {% endif %}
         </div>
         <div class="user-nickname1">{{ user.username }}</div>

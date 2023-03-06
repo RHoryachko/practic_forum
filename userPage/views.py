@@ -64,6 +64,14 @@ class CreateProfilePageView(CreateView):
         return reverse_lazy('post_list')
 
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['first_name'].widget.attrs.update({'class': 'real-input'})
+        form.fields['last_name'].widget.attrs.update({'class': 'real-input'})
+        form.fields['bio'].widget.attrs.update({'class': 'add-bio', 'placeholder': 'Enter your bio...'})
+        return form
+
+
 class EditProfilePageView(UpdateView):
     model = Profile
     template_name = 'profile/edit_user_profile.html'
@@ -79,3 +87,18 @@ class EditProfilePageView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('post_list')
+
+    def get_initial(self):
+        initial = super().get_initial()
+        profile = self.get_object()
+        initial['bio'] = profile.bio
+        initial['first_name'] = profile.first_name
+        initial['last_name'] = profile.last_name
+        return initial
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['first_name'].widget.attrs.update({'class': 'real-input'})
+        form.fields['last_name'].widget.attrs.update({'class': 'real-input'})
+        form.fields['bio'].widget.attrs.update({'class': 'add-bio', 'placeholder': 'Enter your bio...'})
+        return form

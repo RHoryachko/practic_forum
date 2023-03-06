@@ -1,0 +1,132 @@
+body {
+    background: #607C55;
+}
+
+.box {
+    position:absolute;
+    top:550px;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:915px;
+    height:650px;
+    background-color: #fff;
+    border:10px solid #3D5037;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+h2 {
+    color:#3D5037;
+}
+
+.img-button {
+    color: #fff;
+    background-color: #7AA06E;
+    border-radius: 15px;
+    padding:12px;
+    padding-left:40px;
+    padding-right:40px;
+    margin-left: 20px;
+}
+
+.img-button:hover{
+    cursor:pointer;
+}
+
+.img-button:active{
+    opacity: 0.5;
+}
+
+.add-profile-picture {
+    display: flex;
+    align-items: center;
+    margin-left:23%;
+    margin-bottom: 30px;
+    margin-top: -25px;
+}
+
+.add-profile-bio {
+    display: flex;
+    align-items:top;
+    margin-left:23%;
+    margin-bottom: 30px;
+}
+.add-bio {
+    background: none;
+    border: 3.5px solid rgb(88, 86, 86);
+    color: black;
+    border-radius: 20px;
+    font-size: 24px;
+    height: 210px;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-left: 20px;
+    width: 400px;
+    resize: none;
+}
+.add-bio::placeholder {
+    color:#3D5037;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    margin-left:23%;
+    margin-top: 30px; 
+    position:relative;
+    font-size: 20px;
+}
+
+.real-input {
+    margin-left: 20px;
+    width:41%;
+    padding: 0 1px;
+    height: 50px;
+    font-size:28px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.line {
+    border:2px solid #3D5037; 
+    position: absolute;
+    top:60px;
+    left: 165px;
+    width: 41%;
+}
+
+.second {
+    display: flex;
+    align-items: center;
+    margin-left:23%;
+    margin-top: 0px; 
+    position:relative;
+    font-size: 20px;
+}
+
+button {
+    color: #fff;
+    background-color: #3D5037;
+    border:none;
+    border-radius: 20px;
+    height:65px;
+    width: 265px;
+    font-size: 30px;
+    cursor: pointer;
+    margin-top:15px;
+}   
+
+button:active {
+    opacity: 0.5;
+}
+
