@@ -32,9 +32,8 @@
             {% else %}
                 <a href="{% url 'create_user_profile'%}" class="menu-bar-button">New Profile</a>
             {% endif %}
-            <form>  {% csrf_token %}<a href="{% url 'post_list' %}" class="curr-menu-bar-button">Forum</a>
-                <a href="{% url 'music_list' %}" class="menu-bar-button">Music</a>
-            </form>
+            <form>  {% csrf_token %}<a href="{% url 'post_list' %}" class="menu-bar-button">Forum</a>
+                <a href="{% url 'music_list' %}" class="curr-menu-bar-button">Music</a></form>
         </div>
          {% endif %}
 

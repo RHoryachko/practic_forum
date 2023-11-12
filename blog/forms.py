@@ -11,7 +11,7 @@ class PostForm(forms.ModelForm):
                                                                             'class' : 'title-input'}))
     text = forms.CharField(label="Текст", widget=forms.Textarea(attrs={'placeholder': 'Введіть текст...',
                                                                         'class' : 'text-input'}))
-    image = forms.ImageField(label="Зображення", widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False)
+    image = forms.ImageField(label="Зображення", widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
 
     class Meta:
         model = Post

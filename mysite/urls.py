@@ -33,5 +33,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', account_views.register, name='register'),
     path('profile/', include('userPage.urls')),
+    path('music/', include('music.urls'), name='music_list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

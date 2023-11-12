@@ -2,7 +2,9 @@
 *~
 __pycache__
 myvenv
+MyVenv
 db.sqlite3
 /static
 images/
+music/songs
 .DS_Store

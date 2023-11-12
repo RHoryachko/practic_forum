@@ -1,0 +1,20 @@
+<!-- music/templates/music/list_music.html -->
+{% extends 'headermusic/base.html' %}
+
+{% block content %}
+  <h2>List of Music</h2>
+  <ul>
+    {% for song in songs %}
+      <li>
+        {{ song.title }} -
+        <audio controls>
+          <source src="{{ song.audio_file.url }}" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+        - <a href="{{ song.audio_file.url }}" download>Download</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'upload_music' %}">Upload Music</a>
+{% endblock %}
+

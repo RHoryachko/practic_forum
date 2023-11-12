@@ -1,0 +1,14 @@
+<!-- music/templates/music/upload_music.html -->
+{% extends 'headermusic/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h2>Upload Music</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+  <a href="{% url 'list_music' %}">List Music</a>
+{% endif %}
+{% endblock %}
